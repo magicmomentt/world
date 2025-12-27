@@ -295,3 +295,332 @@ p {
 .hidden {
     display: none !important;
 }
+
+/* Replay Button */
+.replay-btn {
+    margin-top: 30px;
+    padding: 12px 30px;
+    background: var(--accent-blue);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.replay-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(79, 163, 255, 0.4);
+}
+
+.final-text {
+    margin-top: 20px;
+}
+
+.cal-header {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: var(--accent-blue);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE FIRST
+   ============================================ */
+
+/* Mobile Phones (Portrait) - up to 480px */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 15px;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.3rem;
+    }
+
+    p {
+        font-size: 1.1rem;
+    }
+
+    /* Lock Scene */
+    .lock-wrapper {
+        padding: 20px;
+        margin: 0 15px;
+        max-width: 90%;
+    }
+
+    .lock-container {
+        gap: 10px;
+    }
+
+    .tumbler-display {
+        width: 40px;
+        height: 60px;
+        font-size: 2rem;
+    }
+
+    .arrow-btn {
+        font-size: 1rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .title {
+        font-size: 1.8rem !important;
+    }
+
+    /* Calendar */
+    .calendar-container {
+        padding: 20px;
+        max-width: 90%;
+        margin: 0 15px;
+    }
+
+    .calendar-img-container {
+        max-width: 250px;
+    }
+
+    .cal-header {
+        font-size: 1.4rem;
+    }
+
+    .cal-grid {
+        gap: 3px;
+        font-size: 0.9rem;
+    }
+
+    .final-text h2 {
+        font-size: 1.5rem;
+    }
+
+    .final-text h3 {
+        font-size: 1.1rem;
+    }
+
+    .replay-btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+
+    /* Final Message */
+    .final-message h2 {
+        font-size: 2rem;
+    }
+
+    .final-message h3 {
+        font-size: 1.3rem;
+    }
+
+    /* Navigation */
+    .nav-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    #nav-controls {
+        bottom: 15px;
+        right: 15px;
+    }
+
+    /* Image rotation adjustment for mobile */
+    #scene-2 .bg-img {
+        transform: rotate(90deg) scale(1.8);
+    }
+}
+
+/* Mobile Phones (Landscape) & Small Tablets - 481px to 767px */
+@media (min-width: 481px) and (max-width: 767px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1.3rem;
+    }
+
+    .lock-wrapper {
+        padding: 30px;
+        max-width: 85%;
+    }
+
+    .lock-container {
+        gap: 15px;
+    }
+
+    .tumbler-display {
+        width: 45px;
+        height: 65px;
+        font-size: 2.2rem;
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .calendar-container {
+        padding: 25px;
+        max-width: 450px;
+    }
+
+    .calendar-img-container {
+        max-width: 280px;
+    }
+
+    .cal-header {
+        font-size: 1.6rem;
+    }
+
+    .final-message h2 {
+        font-size: 2.8rem;
+    }
+
+    .final-message h3 {
+        font-size: 1.6rem;
+    }
+
+    #scene-2 .bg-img {
+        transform: rotate(90deg) scale(1.6);
+    }
+}
+
+/* Tablets (Portrait) - 768px to 1024px */
+@media (min-width: 768px) and (max-width: 1024px) {
+    h1 {
+        font-size: 2.8rem;
+    }
+
+    h2 {
+        font-size: 2.3rem;
+    }
+
+    .lock-wrapper {
+        padding: 35px;
+        max-width: 600px;
+    }
+
+    .calendar-container {
+        padding: 30px;
+        max-width: 500px;
+    }
+
+    .calendar-img-container {
+        max-width: 320px;
+    }
+
+    .final-message h2 {
+        font-size: 3.2rem;
+    }
+
+    .final-message h3 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Tablets (Landscape) & Small Desktops - 1025px to 1366px */
+@media (min-width: 1025px) and (max-width: 1366px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    .lock-wrapper {
+        padding: 40px;
+        max-width: 700px;
+    }
+
+    .calendar-container {
+        max-width: 450px;
+    }
+}
+
+/* Large Desktops - 1367px and up */
+@media (min-width: 1367px) {
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    h2 {
+        font-size: 3rem;
+    }
+
+    .lock-wrapper {
+        padding: 50px;
+        max-width: 800px;
+    }
+
+    .tumbler-display {
+        width: 60px;
+        height: 80px;
+        font-size: 3rem;
+    }
+
+    .calendar-container {
+        max-width: 500px;
+        padding: 40px;
+    }
+
+    .final-message h2 {
+        font-size: 4rem;
+    }
+
+    .final-message h3 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Orientation-specific adjustments */
+@media (orientation: landscape) and (max-height: 500px) {
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+
+    .lock-wrapper {
+        padding: 15px;
+    }
+
+    .calendar-container {
+        padding: 15px;
+        max-width: 350px;
+    }
+
+    .calendar-img-container {
+        max-width: 200px;
+        margin-bottom: 10px;
+    }
+
+    .final-message h2 {
+        font-size: 2rem;
+    }
+
+    .final-message h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .arrow-btn {
+        padding: 10px;
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .nav-btn,
+    .replay-btn {
+        min-height: 44px;
+        padding: 12px 24px;
+    }
+}
