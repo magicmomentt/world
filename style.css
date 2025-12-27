@@ -1,0 +1,297 @@
+:root {
+    --bg-dark: #050a14;
+    --text-light: #e0f2ff;
+    --lock-blue: #2c3e50;
+    --accent-blue: #4fa3ff;
+    --planet-color: #f7a08c;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Patrick Hand', cursive;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+}
+
+/* Background Stars */
+.stars-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+    z-index: -1;
+}
+
+/* Scene Management */
+.scene {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1.5s ease-in-out, transform 1.5s ease;
+}
+
+.scene.active {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 10;
+}
+
+.scene.hidden {
+    display: none;
+    /* Helper for JS if needed, but opacity handles visual */
+}
+
+/* Typography */
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: var(--accent-blue);
+}
+
+p {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+/* Scene 1: Lock */
+.lock-wrapper {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+.lock-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.tumbler-display {
+    width: 50px;
+    height: 70px;
+    background: #fff;
+    color: #000;
+    font-size: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-family: monospace;
+}
+
+.arrow-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.subtitle {
+    margin-top: 20px;
+    opacity: 0.8;
+    font-size: 1.2rem;
+}
+
+/* Visual Elements */
+.visual-planets {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+}
+
+.planet {
+    background: #888;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+}
+
+/* Make them look distinct */
+.p3 {
+    background: blue;
+}
+
+/* Earth */
+.p5 {
+    background: orange;
+    width: 50px;
+    height: 50px;
+}
+
+/* Jupiter */
+
+.earth-visual {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle at 30% 30%, #4fa3ff, #0044ff);
+    border-radius: 50%;
+    box-shadow: 0 0 50px rgba(79, 163, 255, 0.4);
+    margin: 30px auto;
+    transition: transform 2s ease;
+}
+
+.earth-visual.major {
+    transform: scale(1.5);
+}
+
+.earth-visual.zoom-1 {
+    transform: scale(3);
+}
+
+.earth-visual.zoom-2 {
+    transform: scale(6);
+    opacity: 0.5;
+}
+
+/* Canvas for Particles */
+#main-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+#main-canvas.active {
+    opacity: 1;
+}
+
+.text-layer {
+    z-index: 20;
+    text-shadow: 0 0 10px black;
+}
+
+/* Calendar */
+.calendar-container {
+    background: white;
+    color: black;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 400px;
+}
+
+.cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-top: 20px;
+    font-family: monospace;
+}
+
+.special-day {
+    background: var(--accent-blue);
+    color: white;
+    border-radius: 50%;
+}
+
+.calendar-img-container {
+    margin: 0 auto 20px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.calendar-img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Image Sequence Styles */
+.bg-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    filter: brightness(0.6);
+}
+
+/* Specific rotation for the first image (Scene 2) */
+#scene-2 .bg-img {
+    transform: rotate(90deg) scale(1.5);
+    /* Rotate and scale up to cover gaps */
+}
+
+/* Ensure content sits above image */
+.content-center {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+}
+
+.final-message h2,
+.final-message h3 {
+    font-family: 'Dancing Script', cursive;
+    text-align: center;
+    color: var(--text-light);
+}
+
+.final-message h2 {
+    font-size: 3.5rem;
+    color: var(--accent-blue);
+    margin-bottom: 0.5rem;
+}
+
+.final-message h3 {
+    font-size: 2rem;
+    font-family: 'Patrick Hand', cursive;
+}
+
+/* Nav */
+#nav-controls {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.nav-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid white;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}

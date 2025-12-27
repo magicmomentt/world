@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love</title>
+    <!-- Importing Fonts: Patrick Hand for a handwritten feel, Dancing Script for romance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Patrick+Hand&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for arrows -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- BACKGROUNDS (Fixed) -->
+    <div id="stars-bg" class="stars-container"></div>
+    <audio id="bg-music" loop>
+        <!-- User can replace this with their own URL -->
+        <source src="https://assets.mixkit.co/music/preview/mixkit-beautiful-dream-493.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- SCENE 1: The Lock -->
+    <section id="scene-1" class="scene active">
+        <div class="lock-wrapper">
+            <h1 class="title">Enter our combination</h1>
+
+            <div class="lock-container">
+                <!-- Tumblers -->
+                <div class="tumbler-column">
+                    <button class="arrow-btn up" onclick="rotateTumbler(0, 1)"><i
+                            class="fas fa-chevron-up"></i></button>
+                    <div class="tumbler-display" id="tumbler-0">0</div>
+                    <button class="arrow-btn down" onclick="rotateTumbler(0, -1)"><i
+                            class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="tumbler-column">
+                    <button class="arrow-btn up" onclick="rotateTumbler(1, 1)"><i
+                            class="fas fa-chevron-up"></i></button>
+                    <div class="tumbler-display" id="tumbler-1">0</div>
+                    <button class="arrow-btn down" onclick="rotateTumbler(1, -1)"><i
+                            class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="tumbler-column">
+                    <button class="arrow-btn up" onclick="rotateTumbler(2, 1)"><i
+                            class="fas fa-chevron-up"></i></button>
+                    <div class="tumbler-display" id="tumbler-2">0</div>
+                    <button class="arrow-btn down" onclick="rotateTumbler(2, -1)"><i
+                            class="fas fa-chevron-down"></i></button>
+                </div>
+            </div>
+
+            <div class="status-message" id="status-msg"></div>
+            <p class="subtitle">Some things are locked… until the right heart opens them.</p>
+        </div>
+    </section>
+
+    <!-- SCENE 2: Galaxy -->
+    <section id="scene-2" class="scene hidden">
+        <img src="assets/1.jpg" class="bg-img" alt="Galaxy">
+        <div class="content-center">
+            <h1>In our galaxy</h1>
+        </div>
+    </section>
+
+    <!-- SCENE 3: Planets -->
+    <section id="scene-3" class="scene hidden">
+        <img src="assets/2.jpg" class="bg-img" alt="Planets">
+        <div class="content-center">
+            <h1>Among all the planets</h1>
+        </div>
+    </section>
+
+    <!-- SCENE 4: Earth -->
+    <section id="scene-4" class="scene hidden">
+        <img src="assets/3.jpg" class="bg-img" alt="Earth">
+        <div class="content-center">
+            <h1>On our planet</h1>
+        </div>
+    </section>
+
+    <!-- SCENE 5: Continents -->
+    <section id="scene-5" class="scene hidden">
+        <img src="assets/4.jpg" class="bg-img" alt="Continents">
+        <div class="content-center">
+            <h1>Among all the continents</h1>
+        </div>
+    </section>
+
+    <!-- SCENE 6: Countries -->
+    <section id="scene-6" class="scene hidden">
+        <img src="assets/5.jpg" class="bg-img" alt="Countries">
+        <div class="content-center">
+            <h1>Among all the countries</h1>
+        </div>
+    </section>
+
+    <!-- SCENE 7: People -->
+    <section id="scene-7" class="scene hidden">
+        <img src="assets/6.jpg" class="bg-img" alt="People">
+        <div class="content-center">
+            <h1>Among all the people</h1>
+        </div>
+    </section>
+
+    <!-- SCENE 8: Final Text -->
+    <section id="scene-8" class="scene hidden">
+        <div class="final-message">
+            <h2>I chose you</h2>
+            <h3>among the whole world.</h3>
+        </div>
+    </section>
+
+    <canvas id="main-canvas"></canvas>
+
+    <!-- SCENE 9: Canvas/Heart Transition (Optional buffer or combine with 8) -->
+    <!-- We will let the script handle the canvas activation on Scene 8 or 9 -->
+
+    <!-- SCENE 9: Calendar/Final -->
+    <section id="scene-9" class="scene hidden">
+        <div class="calendar-container">
+            <div class="calendar-img-container">
+                <img src="assets/7.jpg" alt="Us" class="calendar-img">
+            </div>
+
+            <div class="calendar-card">
+                <div class="cal-header">December 2024</div>
+                <div class="cal-grid">
+                    <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+                    <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span>
+                    <span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span>
+                    <span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span>
+                    <span>22</span><span>23</span><span
+                        class="special-day">24</span><span>25</span><span>26</span><span>27</span><span>28</span>
+                    <span>29</span><span>30</span><span>31</span>
+                </div>
+            </div>
+
+            <div class="final-text">
+                <h2>To be continued…</h2>
+                <h3>Forever 🤍</h3>
+            </div>
+
+            <button class="replay-btn" onclick="location.reload()">Replay Experience ↺</button>
+        </div>
+    </section>
+
+    <!-- Next Button for manual navigation if needed (optional) -->
+    <div id="nav-controls" class="hidden">
+        <button id="next-btn" class="nav-btn">Next ➔</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
