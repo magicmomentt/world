@@ -127,7 +127,19 @@ function resizeCanvas() {
     width = canvas.width = window.innerWidth;
     height = canvas.height = window.innerHeight;
 }
-window.addEventListener('resize', resizeCanvas);
+
+// Debounced resize handler for better performance
+let resizeTimeout;
+window.addEventListener('resize', () => {
+    resizeCanvas();
+    // Reinitialize particles on significant resize (e.g., orientation change)
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        if (particles.length > 0) {
+            initParticles();
+        }
+    }, 300);
+});
 resizeCanvas();
 
 function getHeartPoint(t, scale) {
@@ -202,7 +214,9 @@ class Particle {
 
 function initParticles() {
     particles = [];
-    const count = 150; // Representing "People"
+    // Responsive particle count based on screen size
+    const isMobile = window.innerWidth < 768;
+    const count = isMobile ? 75 : 150; // Fewer particles on mobile for better performance
     for (let i = 0; i < count; i++) particles.push(new Particle());
 }
 
